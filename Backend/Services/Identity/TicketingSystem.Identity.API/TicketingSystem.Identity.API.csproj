@@ -27,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TicketingSystem.Identity.Application\TicketingSystem.Identity.Application.csproj" />
   </ItemGroup>
 
 </Project>
