@@ -42,9 +42,14 @@ builder.Services.AddSwaggerGen(c =>
                     }
                 });
 });
-builder.Services.AddServices();
-var jwtSecretKey = builder.Configuration["jwtOptions"];
-if (jwtSecretKey != null)
+var connectionString = builder.Configuration.GetConnectionString("identity");
+if (connectionString is not null)
+{
+    builder.Services.AddServices(connectionString);
+
+}
+var jwtSecretKey = builder.Configuration["jwtOptions:Secret"];
+if (jwtSecretKey is not null)
 {
     var Key = Encoding.UTF8.GetBytes(jwtSecretKey);
     builder.Services.AddAuthentication(x =>

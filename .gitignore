@@ -111,3 +111,5 @@ wwwroot
 *.vsidx
 *.lock
 *.suo
+*.2
+*.config

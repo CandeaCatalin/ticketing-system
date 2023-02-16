@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TicketingSystem.Identity.DataAccess\TicketingSystem.Identity.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
