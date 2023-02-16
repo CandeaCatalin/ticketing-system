@@ -110,3 +110,4 @@ appsettings.json
 wwwroot
 *.vsidx
 *.lock
+*.suo
