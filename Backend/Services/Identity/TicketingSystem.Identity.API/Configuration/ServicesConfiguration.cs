@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Runtime.CompilerServices;
@@ -23,7 +24,7 @@ namespace TicketingSystem.Identity.API.Configuration
         {
             return services;
         }
-        public static IServiceCollection AddDataServices(this IServiceCollection services, string connectionString)
+        private static IServiceCollection AddDataServices(this IServiceCollection services, string connectionString)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("TicketingSystem.Identity.DataAccess")));
             services.AddIdentity<User, IdentityRole>(o =>
@@ -38,5 +39,6 @@ namespace TicketingSystem.Identity.API.Configuration
                 .AddRoleManager<RoleManager<IdentityRole>>();
             return services;
         }
+        
     }
 }

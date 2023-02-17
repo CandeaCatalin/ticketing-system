@@ -1,5 +1,4 @@
 version: '3.4'
-
 services:
   ticketingsystem.identity.api:
     image: ticketingsystem/identity.api
@@ -11,8 +10,12 @@ services:
   identity.sql:
     image: "mcr.microsoft.com/mssql/server"
     environment:
-      SA_PASSWORD: visma_assignment_password
+      SA_PASSWORD: V1sma_ass1gnment_password
       ACCEPT_EULA: Y
       MSSQL_PID: Express
+      MSSQL_TCP_PORT: 1433
+      MSSQL_DATABASE: identity_database
+      MSSQL_PASSWORD: V1sma_ass1gnment_password
     ports:
       - "1433:1433"
+
