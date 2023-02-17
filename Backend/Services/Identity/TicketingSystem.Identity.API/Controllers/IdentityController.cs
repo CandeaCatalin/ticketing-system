@@ -14,6 +14,23 @@ namespace TicketingSystem.Identity.API.Controllers
         public IdentityController(IUserRepository userRepository) {
             _userRepository = userRepository;
         }
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginModel model)
+        {
+            try
+            {
+                var token =await _userRepository.Login(model);
+                return Ok(token);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }catch(Exception e)
+            {
+                return BadRequest(e);
+            }
+
+        }
       
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterModel model)
