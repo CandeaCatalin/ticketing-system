@@ -5,7 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Runtime.CompilerServices;
 using System.Text;
+using TicketingSystem.Identity.Application.Abstractions;
 using TicketingSystem.Identity.DataAccess.Database;
+using TicketingSystem.Identity.DataAccess.Repositories;
 using TicketingSystem.Identity.Domain.Models;
 
 namespace TicketingSystem.Identity.API.Configuration
@@ -22,6 +24,7 @@ namespace TicketingSystem.Identity.API.Configuration
         }
         private static IServiceCollection AddScopes(this IServiceCollection services)
         {
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
         private static IServiceCollection AddDataServices(this IServiceCollection services, string connectionString)

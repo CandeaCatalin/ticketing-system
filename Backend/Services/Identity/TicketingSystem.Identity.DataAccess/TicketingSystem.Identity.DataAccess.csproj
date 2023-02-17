@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TicketingSystem.Identity.Application\TicketingSystem.Identity.Application.csproj" />
     <ProjectReference Include="..\TicketingSystem.Identity.Domain\TicketingSystem.Identity.Domain.csproj" />
   </ItemGroup>
 
