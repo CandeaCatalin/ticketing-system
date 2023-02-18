@@ -1,6 +1,6 @@
-﻿namespace TicketingSystem.Ticket.Domain.Models
+﻿namespace TicketingSystem.Tickets.Domain.Models
 {
-    public class Status
+    public class TicketStatus
     {
         public int Id { get; set; }
         public string Name { get; set; } = "";

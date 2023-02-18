@@ -1,5 +1,15 @@
 {
   "profiles": {
+    "TicketingSystem.Ticket.API": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7081;http://localhost:5226"
+    },
     "http": {
       "commandName": "Project",
       "launchBrowser": true,

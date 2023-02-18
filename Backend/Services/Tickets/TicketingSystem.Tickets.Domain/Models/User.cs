@@ -1,4 +1,4 @@
-﻿namespace TicketingSystem.Ticket.Domain.Models
+﻿namespace TicketingSystem.Tickets.Domain.Models
 {
     public class User
     {
