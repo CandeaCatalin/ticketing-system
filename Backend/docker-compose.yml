@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3'
 services:
   ticketingsystem.identity.api:
     image: ticketingsystem/identity.api
@@ -18,4 +18,22 @@ services:
       MSSQL_PASSWORD: V1sma_ass1gnment_password
     ports:
       - "1433:1433"
+  ticketingsystem.ticket.api:
+    image: ticketingsystem/ticket.api
+    build:
+      context: .
+      dockerfile: Services/Tickets/TicketingSystem.Ticket.API/Dockerfile
+    depends_on:
+      - ticket.sql
+  ticket.sql:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      SA_PASSWORD: V1sma_ass1gnment_password
+      ACCEPT_EULA: Y
+      MSSQL_PID: Express
+      MSSQL_TCP_PORT: 1433
+      MSSQL_DATABASE: ticket_database
+      MSSQL_PASSWORD: V1sma_ass1gnment_password
+    ports:
+      - "1432:1433"
 
