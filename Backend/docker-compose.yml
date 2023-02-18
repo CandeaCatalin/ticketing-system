@@ -22,7 +22,7 @@ services:
     image: ticketingsystem/ticket.api
     build:
       context: .
-      dockerfile: Services/Tickets/TicketingSystem.Ticket.API/Dockerfile
+      dockerfile: Services/Tickets/TicketingSystem.Tickets.API/Dockerfile
     depends_on:
       - ticket.sql
   ticket.sql:

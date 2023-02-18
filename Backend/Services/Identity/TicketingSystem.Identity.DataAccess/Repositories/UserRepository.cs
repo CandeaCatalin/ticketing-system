@@ -5,8 +5,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
+using TicketingSystem.Exceptions;
 using TicketingSystem.Identity.Application.Abstractions;
-using TicketingSystem.Identity.Application.Exceptions;
 using TicketingSystem.Identity.Domain.Models;
 using TicketingSystem.Identity.Domain.Models.API;
 
@@ -29,6 +29,10 @@ namespace TicketingSystem.Identity.DataAccess.Repositories
                 {
                     throw new ValidationException("Email is invalid!");
                 }
+                if (!IsValidPassword(model.Password))
+                {
+                    throw new ValidationException("Password is not correct!");
+                }
                 var existingUser = await GetUserByEmailAsync(model.Email);
                 if (existingUser is not null)
                 {
@@ -44,7 +48,13 @@ namespace TicketingSystem.Identity.DataAccess.Repositories
                     UserName = model.Email
                 };
                 await _userManager.CreateAsync(newUser, model.Password);
+               
             }
+        }
+
+        private bool IsValidPassword(string password)
+        {
+            return password.Length > 8;
         }
 
         private async Task<User?> GetUserByEmailAsync(string email)

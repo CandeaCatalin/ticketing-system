@@ -12,7 +12,7 @@ using TicketingSystem.Tickets.DataAccess.Database;
 namespace TicketingSystem.Tickets.DataAccess.Migrations
 {
     [DbContext(typeof(TicketDbContext))]
-    [Migration("20230218113715_InitialCreate")]
+    [Migration("20230218151610_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -36,6 +36,10 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
                     b.Property<DateTime>("Closed")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Desciption")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Opened")
                         .HasColumnType("datetime2");
 
@@ -44,6 +48,10 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
 
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TicketTypeId")
                         .HasColumnType("int");
@@ -78,7 +86,7 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TicketServiceType");
+                    b.ToTable("TicketServiceTypes");
                 });
 
             modelBuilder.Entity("TicketingSystem.Tickets.Domain.Models.TicketStatus", b =>
@@ -95,7 +103,7 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TicketStatus");
+                    b.ToTable("TicketStatuses");
                 });
 
             modelBuilder.Entity("TicketingSystem.Tickets.Domain.Models.TicketType", b =>
@@ -112,7 +120,7 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TicketType");
+                    b.ToTable("TicketTypes");
                 });
 
             modelBuilder.Entity("TicketingSystem.Tickets.Domain.Models.User", b =>

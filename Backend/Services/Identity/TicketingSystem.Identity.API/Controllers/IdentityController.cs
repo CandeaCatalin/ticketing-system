@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TicketingSystem.Exceptions;
 using TicketingSystem.Identity.Application.Abstractions;
-using TicketingSystem.Identity.Application.Exceptions;
 using TicketingSystem.Identity.Domain.Models.API;
 
 namespace TicketingSystem.Identity.API.Controllers

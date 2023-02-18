@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using TicketingSystem.Tickets.Application.Abstractions;
 using TicketingSystem.Tickets.DataAccess.Database;
+using TicketingSystem.Tickets.DataAccess.Repositories;
 
 namespace TicketingSystem.Tickets.API.Configuration
 {
@@ -15,6 +17,7 @@ namespace TicketingSystem.Tickets.API.Configuration
         }
         private static IServiceCollection AddScopes(this IServiceCollection services)
         {
+            services.AddScoped<ITicketRepository, TicketRepository>();
             return services;
         }
         private static IServiceCollection AddDataServices(this IServiceCollection services, string connectionString)

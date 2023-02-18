@@ -12,7 +12,7 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "TicketServiceType",
+                name: "TicketServiceTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -21,11 +21,11 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TicketServiceType", x => x.Id);
+                    table.PrimaryKey("PK_TicketServiceTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "TicketStatus",
+                name: "TicketStatuses",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -34,11 +34,11 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TicketStatus", x => x.Id);
+                    table.PrimaryKey("PK_TicketStatuses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "TicketType",
+                name: "TicketTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -47,7 +47,7 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TicketType", x => x.Id);
+                    table.PrimaryKey("PK_TicketTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -71,6 +71,8 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
                     TicketTypeId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ServiceTypeId = table.Column<int>(type: "int", nullable: false),
+                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Desciption = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StatusId = table.Column<int>(type: "int", nullable: false),
                     Opened = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Closed = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -79,21 +81,21 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_Tickets", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tickets_TicketServiceType_ServiceTypeId",
+                        name: "FK_Tickets_TicketServiceTypes_ServiceTypeId",
                         column: x => x.ServiceTypeId,
-                        principalTable: "TicketServiceType",
+                        principalTable: "TicketServiceTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tickets_TicketStatus_StatusId",
+                        name: "FK_Tickets_TicketStatuses_StatusId",
                         column: x => x.StatusId,
-                        principalTable: "TicketStatus",
+                        principalTable: "TicketStatuses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tickets_TicketType_TicketTypeId",
+                        name: "FK_Tickets_TicketTypes_TicketTypeId",
                         column: x => x.TicketTypeId,
-                        principalTable: "TicketType",
+                        principalTable: "TicketTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -132,13 +134,13 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
                 name: "Tickets");
 
             migrationBuilder.DropTable(
-                name: "TicketServiceType");
+                name: "TicketServiceTypes");
 
             migrationBuilder.DropTable(
-                name: "TicketStatus");
+                name: "TicketStatuses");
 
             migrationBuilder.DropTable(
-                name: "TicketType");
+                name: "TicketTypes");
 
             migrationBuilder.DropTable(
                 name: "Users");
