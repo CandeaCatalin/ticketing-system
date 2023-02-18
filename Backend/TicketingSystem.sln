@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSystem.Identity.Ap
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{521E04E3-E7CA-4204-830F-802092F42E9D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tickets", "Tickets", "{4CAE3F0A-8350-4FEF-8E0C-313C36453285}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Ticket.API", "Services\Tickets\TicketingSystem.Ticket.API\TicketingSystem.Ticket.API.csproj", "{8B8A5665-BBBC-41C2-80DA-85CEB5D00EE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,10 @@ Global
 		{521E04E3-E7CA-4204-830F-802092F42E9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{521E04E3-E7CA-4204-830F-802092F42E9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{521E04E3-E7CA-4204-830F-802092F42E9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B8A5665-BBBC-41C2-80DA-85CEB5D00EE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B8A5665-BBBC-41C2-80DA-85CEB5D00EE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B8A5665-BBBC-41C2-80DA-85CEB5D00EE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B8A5665-BBBC-41C2-80DA-85CEB5D00EE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +61,8 @@ Global
 		{771FC208-8C53-4B0C-9DDF-012C67D8FF73} = {3CCEAF77-05B8-45ED-8567-A249CB310BD5}
 		{79ABD951-39EB-4B5F-A68D-80769CB6B583} = {3CCEAF77-05B8-45ED-8567-A249CB310BD5}
 		{FC20B349-E699-4BDA-A45A-C666A3E7F119} = {3CCEAF77-05B8-45ED-8567-A249CB310BD5}
+		{4CAE3F0A-8350-4FEF-8E0C-313C36453285} = {422F9757-7B9A-4332-B74D-2F970DB0595C}
+		{8B8A5665-BBBC-41C2-80DA-85CEB5D00EE3} = {4CAE3F0A-8350-4FEF-8E0C-313C36453285}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9183281-E94E-46BF-98AA-9DCE37FD83E6}
