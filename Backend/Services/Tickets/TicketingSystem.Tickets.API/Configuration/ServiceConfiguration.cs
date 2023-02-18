@@ -18,6 +18,7 @@ namespace TicketingSystem.Tickets.API.Configuration
         private static IServiceCollection AddScopes(this IServiceCollection services)
         {
             services.AddScoped<ITicketRepository, TicketRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
         private static IServiceCollection AddDataServices(this IServiceCollection services, string connectionString)

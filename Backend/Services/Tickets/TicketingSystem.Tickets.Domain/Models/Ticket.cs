@@ -16,5 +16,6 @@ namespace TicketingSystem.Tickets.Domain.Models
         public TicketStatus Status { get; set; } = new TicketStatus();
         public DateTime Opened { get; set; }
         public DateTime Closed { get; set; }
+        public Priority Priority { get; set; }
     }
 }

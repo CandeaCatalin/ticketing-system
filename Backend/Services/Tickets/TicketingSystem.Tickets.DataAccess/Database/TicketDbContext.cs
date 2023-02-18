@@ -13,5 +13,6 @@ namespace TicketingSystem.Tickets.DataAccess.Database
         public DbSet<TicketType> TicketTypes { get; set; } 
         public DbSet<TicketStatus> TicketStatuses{ get; set; } 
         public DbSet<TicketServiceType> TicketServiceTypes{ get; set; } 
+        public DbSet<Priority> Priorities{ get; set; } 
     }
 }

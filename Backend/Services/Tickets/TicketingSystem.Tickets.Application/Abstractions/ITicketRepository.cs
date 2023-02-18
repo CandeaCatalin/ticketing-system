@@ -5,5 +5,7 @@ namespace TicketingSystem.Tickets.Application.Abstractions
     public interface ITicketRepository
     {
         public Task CreateTicket(CreateTicketModel model);
+        public Task UpdateTicket(UpdateTicketModel model);
+        public Task DeleteTicket(DeleteTicketModel model);
     }
 }
