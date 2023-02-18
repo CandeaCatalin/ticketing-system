@@ -19,13 +19,23 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tickets", "Tickets", "{4CAE3F0A-8350-4FEF-8E0C-313C36453285}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSystem.Ticket.API", "Services\Tickets\TicketingSystem.Ticket.API\TicketingSystem.Ticket.API.csproj", "{8B8A5665-BBBC-41C2-80DA-85CEB5D00EE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSystem.Tickets.API", "Services\Tickets\TicketingSystem.Tickets.API\TicketingSystem.Tickets.API.csproj", "{8B8A5665-BBBC-41C2-80DA-85CEB5D00EE3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1E9A4CBD-2A2F-4519-9D0F-B9118B36ED22} = {1E9A4CBD-2A2F-4519-9D0F-B9118B36ED22}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Ticket.Application", "Services\Tickets\TicketingSystem.Ticket.Application\TicketingSystem.Ticket.Application.csproj", "{BA38D624-B44E-46FD-93E1-A4BC5DC425E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSystem.Tickets.Application", "Services\Tickets\TicketingSystem.Tickets.Application\TicketingSystem.Tickets.Application.csproj", "{BA38D624-B44E-46FD-93E1-A4BC5DC425E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Ticket.Domain", "Services\Tickets\TicketingSystem.Ticket.Domain\TicketingSystem.Ticket.Domain.csproj", "{85AD2461-5265-4F1B-8586-FB8B37061D0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSystem.Tickets.Domain", "Services\Tickets\TicketingSystem.Tickets.Domain\TicketingSystem.Tickets.Domain.csproj", "{85AD2461-5265-4F1B-8586-FB8B37061D0A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSystem.Ticket.DataAccess", "Services\Tickets\TicketingSystem.Ticket.DataAccess\TicketingSystem.Ticket.DataAccess.csproj", "{1E9A4CBD-2A2F-4519-9D0F-B9118B36ED22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSystem.Tickets.DataAccess", "Services\Tickets\TicketingSystem.Tickets.DataAccess\TicketingSystem.Tickets.DataAccess.csproj", "{1E9A4CBD-2A2F-4519-9D0F-B9118B36ED22}"
+	ProjectSection(ProjectDependencies) = postProject
+		{85AD2461-5265-4F1B-8586-FB8B37061D0A} = {85AD2461-5265-4F1B-8586-FB8B37061D0A}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{0123EC98-5A5A-46A3-A167-4B3B8B46D312}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Tickets.Tests", "Testing\TicketingSystem.Tickets.Tests\TicketingSystem.Tickets.Tests.csproj", "{110D43C1-1078-46BC-935C-B0052BAC2A0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +79,10 @@ Global
 		{1E9A4CBD-2A2F-4519-9D0F-B9118B36ED22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E9A4CBD-2A2F-4519-9D0F-B9118B36ED22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E9A4CBD-2A2F-4519-9D0F-B9118B36ED22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{110D43C1-1078-46BC-935C-B0052BAC2A0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{110D43C1-1078-46BC-935C-B0052BAC2A0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{110D43C1-1078-46BC-935C-B0052BAC2A0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{110D43C1-1078-46BC-935C-B0052BAC2A0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +98,7 @@ Global
 		{BA38D624-B44E-46FD-93E1-A4BC5DC425E6} = {4CAE3F0A-8350-4FEF-8E0C-313C36453285}
 		{85AD2461-5265-4F1B-8586-FB8B37061D0A} = {4CAE3F0A-8350-4FEF-8E0C-313C36453285}
 		{1E9A4CBD-2A2F-4519-9D0F-B9118B36ED22} = {4CAE3F0A-8350-4FEF-8E0C-313C36453285}
+		{110D43C1-1078-46BC-935C-B0052BAC2A0E} = {0123EC98-5A5A-46A3-A167-4B3B8B46D312}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9183281-E94E-46BF-98AA-9DCE37FD83E6}
