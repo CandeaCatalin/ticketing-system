@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using TicketingSystem.Exceptions;
 using TicketingSystem.Tickets.Application.Abstractions;
@@ -93,6 +94,19 @@ namespace TicketingSystem.Tickets.API.Controllers
             {
                 return BadRequest();
             }
+        }
+        [HttpGet("getStandardProperties")]
+        public async Task<IActionResult> GetTicketStandardProperties()
+        {
+            try
+            {
+                var propertiesCollection = await _ticketRepository.GetStandardProperties();
+                return Ok(propertiesCollection);
+            }catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
         }
 
     }

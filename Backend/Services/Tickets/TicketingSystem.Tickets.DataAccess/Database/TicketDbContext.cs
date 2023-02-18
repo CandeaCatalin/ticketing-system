@@ -13,7 +13,7 @@ namespace TicketingSystem.Tickets.DataAccess.Database
         public DbSet<TicketType> TicketTypes { get; set; } 
         public DbSet<TicketStatus> TicketStatuses{ get; set; } 
         public DbSet<TicketServiceType> TicketServiceTypes{ get; set; } 
-        public DbSet<TicketPriority> Priorities{ get; set; } 
+        public DbSet<TicketPriority> TicketPriorities { get; set; } 
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

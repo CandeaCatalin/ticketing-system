@@ -8,5 +8,6 @@ namespace TicketingSystem.Tickets.Application.Abstractions
         public Task UpdateTicket(UpdateTicketModel model);
         public Task DeleteTicket(DeleteTicketModel model);
         public Task CloseTicket(CloseTicketModel model);
+        public Task<StandardPropertiesCollectionModel> GetStandardProperties();
     }
 }

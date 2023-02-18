@@ -43,7 +43,7 @@ namespace TicketingSystem.Tickets.DataAccess.Repositories
 
         private async Task<TicketPriority> GetPriorityFromDbAsync(int priorityId)
         {
-            var ticketServiceTypeFromDb = await _ticketDbContext.Priorities.FindAsync(priorityId);
+            var ticketServiceTypeFromDb = await _ticketDbContext.TicketPriorities.FindAsync(priorityId);
             if (ticketServiceTypeFromDb is null)
             {
                 throw new ValidationException("Priority does not exist!");
@@ -138,6 +138,22 @@ namespace TicketingSystem.Tickets.DataAccess.Repositories
             ticketFromDb.Closed = DateTime.Now;
             _ticketDbContext.Update(ticketFromDb);
             await _ticketDbContext.SaveChangesAsync();
+        }
+
+        public async Task<StandardPropertiesCollectionModel> GetStandardProperties()
+        {
+            var ticketServiceTypes =await _ticketDbContext.TicketServiceTypes.ToListAsync();
+            var ticketPriorities =await _ticketDbContext.TicketPriorities.ToListAsync();
+            var ticketStatuses =await _ticketDbContext.TicketStatuses.ToListAsync();
+            var ticketTypes =await _ticketDbContext.TicketTypes.ToListAsync();
+            var propertiesCollection = new StandardPropertiesCollectionModel()
+            {
+                Priorities = ticketPriorities,
+                ServiceTypes = ticketServiceTypes,
+                Statuses = ticketStatuses,
+                TicketTypes = ticketTypes
+            };
+            return propertiesCollection;
         }
     }
 }
