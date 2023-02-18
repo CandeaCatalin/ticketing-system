@@ -22,23 +22,6 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TicketingSystem.Tickets.Domain.Models.Priority", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Priorities");
-                });
-
             modelBuilder.Entity("TicketingSystem.Tickets.Domain.Models.Ticket", b =>
                 {
                     b.Property<int>("Id")
@@ -49,6 +32,10 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
 
                     b.Property<DateTime>("Closed")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Desciption")
                         .IsRequired()
@@ -73,7 +60,7 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
                     b.Property<int>("TicketTypeId")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("UserWhoCreatedId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -86,9 +73,43 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
 
                     b.HasIndex("TicketTypeId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserWhoCreatedId");
 
                     b.ToTable("Tickets");
+                });
+
+            modelBuilder.Entity("TicketingSystem.Tickets.Domain.Models.TicketPriority", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Priorities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "LOW"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "MEDIUM"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "HIGH"
+                        });
                 });
 
             modelBuilder.Entity("TicketingSystem.Tickets.Domain.Models.TicketServiceType", b =>
@@ -106,6 +127,23 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TicketServiceTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Service type 1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Service type 2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Service type 3"
+                        });
                 });
 
             modelBuilder.Entity("TicketingSystem.Tickets.Domain.Models.TicketStatus", b =>
@@ -123,6 +161,23 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TicketStatuses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Closed"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "In progress"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Open"
+                        });
                 });
 
             modelBuilder.Entity("TicketingSystem.Tickets.Domain.Models.TicketType", b =>
@@ -140,6 +195,38 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TicketTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Bug"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Feature Request"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "How To"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Technical Issue"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Cancellation"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Sales Question"
+                        });
                 });
 
             modelBuilder.Entity("TicketingSystem.Tickets.Domain.Models.User", b =>
@@ -159,7 +246,7 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
 
             modelBuilder.Entity("TicketingSystem.Tickets.Domain.Models.Ticket", b =>
                 {
-                    b.HasOne("TicketingSystem.Tickets.Domain.Models.Priority", "Priority")
+                    b.HasOne("TicketingSystem.Tickets.Domain.Models.TicketPriority", "Priority")
                         .WithMany()
                         .HasForeignKey("PriorityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -183,9 +270,9 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TicketingSystem.Tickets.Domain.Models.User", "User")
+                    b.HasOne("TicketingSystem.Tickets.Domain.Models.User", "UserWhoCreated")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UserWhoCreatedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -197,7 +284,7 @@ namespace TicketingSystem.Tickets.DataAccess.Migrations
 
                     b.Navigation("TicketType");
 
-                    b.Navigation("User");
+                    b.Navigation("UserWhoCreated");
                 });
 #pragma warning restore 612, 618
         }

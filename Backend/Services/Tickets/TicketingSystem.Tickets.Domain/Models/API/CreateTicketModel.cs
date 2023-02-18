@@ -7,6 +7,7 @@
         public string Description { get; set; }
         public string UserId { get; set; }
         public string UserName { get; set; }    
+        public string CustomerName { get; set; }    
         public int ServiceTypeId { get; set; }
         public int StatusId { get; set; }
         public int PriorityId { get; set; }

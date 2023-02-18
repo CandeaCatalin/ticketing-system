@@ -24,13 +24,14 @@ namespace TicketingSystem.Tickets.DataAccess.Repositories
             TicketStatus ticketStatus = await GetTicketStatusFromDbAsync(model.StatusId);
             TicketType ticketType = await GetTicketTypeFromDbAsync(model.TicketTypeId);
             TicketServiceType ticketServiceType = await GetTicketServiceTypeFromDbAsync(model.ServiceTypeId);
-            Priority priority = await GetPriorityFromDbAsync(model.PriorityId);
+            TicketPriority priority = await GetPriorityFromDbAsync(model.PriorityId);
             var newTicketToAdd = new Ticket
             {
                 Desciption = model.Description,
                 Subject = model.Subject,
                 TicketType = ticketType,
-                User = user,
+                UserWhoCreated = user,
+                CustomerName = model.CustomerName,
                 Status = ticketStatus,
                 ServiceType = ticketServiceType,
                 Priority = priority,
@@ -40,7 +41,7 @@ namespace TicketingSystem.Tickets.DataAccess.Repositories
             await _ticketDbContext.SaveChangesAsync();
         }
 
-        private async Task<Priority> GetPriorityFromDbAsync(int priorityId)
+        private async Task<TicketPriority> GetPriorityFromDbAsync(int priorityId)
         {
             var ticketServiceTypeFromDb = await _ticketDbContext.Priorities.FindAsync(priorityId);
             if (ticketServiceTypeFromDb is null)
@@ -116,7 +117,7 @@ namespace TicketingSystem.Tickets.DataAccess.Repositories
             TicketStatus newTicketStatus = await GetTicketStatusFromDbAsync(model.StatusId);
             TicketType newTicketType = await GetTicketTypeFromDbAsync(model.TicketTypeId);
             TicketServiceType newTicketServiceType = await GetTicketServiceTypeFromDbAsync(model.ServiceTypeId);
-            Priority priority = await GetPriorityFromDbAsync(model.PriorityId);
+            TicketPriority priority = await GetPriorityFromDbAsync(model.PriorityId);
             existingTicket.Status = newTicketStatus;
             existingTicket.ServiceType = newTicketServiceType;
             existingTicket.Priority = priority;

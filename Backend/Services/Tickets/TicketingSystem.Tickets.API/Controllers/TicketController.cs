@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TicketingSystem.Exceptions;
 using TicketingSystem.Tickets.Application.Abstractions;
 using TicketingSystem.Tickets.Domain.Models.API;
@@ -64,6 +63,25 @@ namespace TicketingSystem.Tickets.API.Controllers
             }
 
         }
-        
+        [HttpGet]
+        public IActionResult GetTicketsForUser()
+        {
+            try
+            {
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+                int userId = 0;
+                if (identity != null)
+                {
+                    IEnumerable<Claim> claims = identity.Claims;
+                    userId = int.Parse(claims.ElementAt(0).Value);
+                }
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
+
     }
 }

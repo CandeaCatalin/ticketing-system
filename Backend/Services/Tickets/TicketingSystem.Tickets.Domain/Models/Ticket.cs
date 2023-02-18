@@ -9,13 +9,14 @@ namespace TicketingSystem.Tickets.Domain.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public TicketType TicketType { get; set; } = new TicketType();
-        public User User { get; set; } = new User();
+        public User UserWhoCreated { get; set; } = new User();
         public TicketServiceType ServiceType { get; set; } = new TicketServiceType();
         public string Subject { get; set; } = "";
         public string Desciption { get; set; } = "";
         public TicketStatus Status { get; set; } = new TicketStatus();
         public DateTime Opened { get; set; }
+        public string CustomerName { get; set; }
         public DateTime Closed { get; set; }
-        public Priority Priority { get; set; }
+        public TicketPriority Priority { get; set; }
     }
 }
