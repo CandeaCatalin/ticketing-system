@@ -63,6 +63,18 @@ namespace TicketingSystem.Tickets.API.Controllers
             }
 
         }
+        [HttpPost("close")]
+        public async Task<IActionResult> CloseTicket(CloseTicketModel model)
+        {
+            try
+            {
+                await _ticketRepository.CloseTicket(model);
+                return Ok();
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         [HttpGet]
         public IActionResult GetTicketsForUser()
         {

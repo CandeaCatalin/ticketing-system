@@ -127,5 +127,17 @@ namespace TicketingSystem.Tickets.DataAccess.Repositories
             _ticketDbContext.Update(existingTicket);
             await _ticketDbContext.SaveChangesAsync();
         }
+
+        public async Task CloseTicket(CloseTicketModel model)
+        {
+            var ticketFromDb = await GetTicketById(model.Id);
+            if(ticketFromDb is null)
+            {
+                throw new Exception("Ticket does not exist");
+            }
+            ticketFromDb.Closed = DateTime.Now;
+            _ticketDbContext.Update(ticketFromDb);
+            await _ticketDbContext.SaveChangesAsync();
+        }
     }
 }
