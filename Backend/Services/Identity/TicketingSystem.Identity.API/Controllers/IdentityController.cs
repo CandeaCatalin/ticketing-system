@@ -21,7 +21,7 @@ namespace TicketingSystem.Identity.API.Controllers
             try
             {
                 var token =await _userRepository.Login(model);
-                return Ok(token);
+                return Ok(new { Token = token });
             }
             catch (ValidationException ex)
             {
@@ -49,7 +49,13 @@ namespace TicketingSystem.Identity.API.Controllers
             {
                 return BadRequest(e);
             }
-            
+        }
+
+        [HttpGet("checkSession")]
+        [Authorize]
+        public IActionResult CheckSession()
+        {
+            return Ok();
         }
     }
 }
