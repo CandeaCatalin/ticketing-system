@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\TicketingSystem.Common.API\TicketingSystem.Common.API.csproj" />
+    <ProjectReference Include="..\..\..\Common\TicketingSystem.Common.API\TicketingSystem.Common.API.csproj" />
     <ProjectReference Include="..\TicketingSystem.Tickets.DataAccess\TicketingSystem.Tickets.DataAccess.csproj" />
   </ItemGroup>
 
