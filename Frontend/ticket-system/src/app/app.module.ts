@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
@@ -13,14 +15,16 @@ import { RegisterComponent } from './register/register.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
+    FormsModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
+      { path: 'home', component: RegisterComponent },
       { path: '**', redirectTo: 'login', pathMatch: 'full' }
     ])
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
