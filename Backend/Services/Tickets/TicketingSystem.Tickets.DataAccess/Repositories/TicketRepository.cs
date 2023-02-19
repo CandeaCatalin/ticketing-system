@@ -155,5 +155,10 @@ namespace TicketingSystem.Tickets.DataAccess.Repositories
             };
             return propertiesCollection;
         }
+
+        public Task<List<Ticket>> GetTicketsForUser(Guid userId)
+        {
+            return _ticketDbContext.Tickets.Include(t => t.TicketType).Include(t => t.ServiceType).Include(t => t.Status).Include(t => t.Priority).Include(t=>t.UserWhoCreated).Where(t => t.UserWhoCreated.Id == userId).ToListAsync();
+        }
     }
 }

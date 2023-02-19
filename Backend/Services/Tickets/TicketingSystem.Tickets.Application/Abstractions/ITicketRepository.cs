@@ -1,4 +1,5 @@
-﻿using TicketingSystem.Tickets.Domain.Models.API;
+﻿using TicketingSystem.Tickets.Domain.Models;
+using TicketingSystem.Tickets.Domain.Models.API;
 
 namespace TicketingSystem.Tickets.Application.Abstractions
 {
@@ -8,6 +9,7 @@ namespace TicketingSystem.Tickets.Application.Abstractions
         public Task UpdateTicket(UpdateTicketModel model);
         public Task DeleteTicket(DeleteTicketModel model);
         public Task CloseTicket(CloseTicketModel model);
+        public Task<List<Ticket>> GetTicketsForUser(Guid userId);
         public Task<StandardPropertiesCollectionModel> GetStandardProperties();
     }
 }

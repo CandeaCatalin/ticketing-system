@@ -1,14 +1,18 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using TicketingSystem.Exceptions;
 using TicketingSystem.Tickets.Application.Abstractions;
+using TicketingSystem.Tickets.Application.Services;
+using TicketingSystem.Tickets.Domain.Models;
 using TicketingSystem.Tickets.Domain.Models.API;
 
 namespace TicketingSystem.Tickets.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class TicketController : ControllerBase
     {
         private readonly ITicketRepository _ticketRepository;
@@ -77,18 +81,14 @@ namespace TicketingSystem.Tickets.API.Controllers
             }
         }
         [HttpGet]
-        public IActionResult GetTicketsForUser()
+        public async Task<IActionResult> GetTicketsForUserAsync()
         {
             try
             {
-                var identity = HttpContext.User.Identity as ClaimsIdentity;
-                int userId = 0;
-                if (identity != null)
-                {
-                    IEnumerable<Claim> claims = identity.Claims;
-                    userId = int.Parse(claims.ElementAt(0).Value);
-                }
-                return Ok();
+                var jwtToken = await HttpContext.GetTokenAsync("access_token");
+                Guid userId = JwtService.getUserIdFromJwt(jwtToken);
+                List<Ticket> ticketsForUser =await _ticketRepository.GetTicketsForUser(userId);
+                return Ok(ticketsForUser);
             }
             catch (Exception e)
             {

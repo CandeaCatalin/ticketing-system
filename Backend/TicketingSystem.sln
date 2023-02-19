@@ -39,7 +39,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSystem.Tickets.Tes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{D17AFB84-8DFD-4B2A-8ECA-643F8F89B920}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Exceptions", "Common\TicketingSystem.Exceptions\TicketingSystem.Exceptions.csproj", "{FBE46595-AA1A-420F-B0E1-3C8C80E4C20C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSystem.Exceptions", "Common\TicketingSystem.Exceptions\TicketingSystem.Exceptions.csproj", "{FBE46595-AA1A-420F-B0E1-3C8C80E4C20C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Common.API", "..\TicketingSystem.Common.API\TicketingSystem.Common.API.csproj", "{E5309E33-CCEB-413B-84F0-79B98F48BF10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +93,10 @@ Global
 		{FBE46595-AA1A-420F-B0E1-3C8C80E4C20C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBE46595-AA1A-420F-B0E1-3C8C80E4C20C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBE46595-AA1A-420F-B0E1-3C8C80E4C20C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5309E33-CCEB-413B-84F0-79B98F48BF10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5309E33-CCEB-413B-84F0-79B98F48BF10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5309E33-CCEB-413B-84F0-79B98F48BF10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5309E33-CCEB-413B-84F0-79B98F48BF10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,6 +114,7 @@ Global
 		{1E9A4CBD-2A2F-4519-9D0F-B9118B36ED22} = {4CAE3F0A-8350-4FEF-8E0C-313C36453285}
 		{110D43C1-1078-46BC-935C-B0052BAC2A0E} = {0123EC98-5A5A-46A3-A167-4B3B8B46D312}
 		{FBE46595-AA1A-420F-B0E1-3C8C80E4C20C} = {D17AFB84-8DFD-4B2A-8ECA-643F8F89B920}
+		{E5309E33-CCEB-413B-84F0-79B98F48BF10} = {D17AFB84-8DFD-4B2A-8ECA-643F8F89B920}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9183281-E94E-46BF-98AA-9DCE37FD83E6}

@@ -15,7 +15,7 @@ namespace TicketingSystem.Identity.DataAccess.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly UserManager<User> _userManager;
-        private const string SECRET_KEY = "secret-key-for-jwt-visma";
+        private const string SECRET_KEY = "nVsc7jp9Kv1pnyqLyeyYsbQNyK7RjLuYh2erLN0VMb7KMuTR1RkHvH32AHeXKxJa";
         public UserRepository(UserManager<User> userManager)
         {
             _userManager = userManager;
