@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { LoginService } from "./login.service";
-import { LoginCredentials } from "./LoginCredentials";
+import { AuthService } from "../auth/auth.service";
+import { LoginCredentials } from "./loginCredentials";
 
 @Component({
     selector: "login-page",
@@ -12,7 +12,7 @@ export class LoginComponent {
     error:string = "";
     canSubmit:boolean = false;
     private _loginCredentials: LoginCredentials={email:"", password:""};
-    constructor(private loginService: LoginService,private router: Router){}
+    constructor(private authService: AuthService,private router: Router){}
     get loginCredentials(){
         return this._loginCredentials;
     }
@@ -25,12 +25,12 @@ export class LoginComponent {
         }
     }
     submit(){
-        this.loginService.Login(this.loginCredentials).subscribe({
+        this.authService.Login(this.loginCredentials).subscribe({
             next: response => {
                 localStorage.setItem("token",response.token);
                 this.router.navigate(['home']);
             },
-            error: err => {this.error = err.error; console.log(err)}
+            error: err => {this.error = err.error;}
           });
     }
    }

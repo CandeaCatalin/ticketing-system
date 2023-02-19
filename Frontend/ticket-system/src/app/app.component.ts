@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from './Login/login.service';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,7 @@ import { LoginService } from './Login/login.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    constructor(private loginService: LoginService, private router: Router) {
+    constructor(private loginService: AuthService, private router: Router) {
       
     }
     ngOnInit() {
