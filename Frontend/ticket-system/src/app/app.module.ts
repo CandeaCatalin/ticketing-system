@@ -12,10 +12,11 @@ import { HomeComponent } from './home/home.component';
 import { TicketListComponent } from './tickets/ticket-list/ticket-list.component';
 import { CreateTicketComponent } from './tickets/create-ticket/create-ticket.component';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { EditTicketComponent } from './tickets/edit-ticket/edit-ticket.component';
 
 @NgModule({
   declarations: [
-    AppComponent,LoginComponent, RegisterComponent, HomeComponent, TicketListComponent, CreateTicketComponent
+    AppComponent,LoginComponent, RegisterComponent, HomeComponent, TicketListComponent, CreateTicketComponent, EditTicketComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +28,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
       { path: 'register', component: RegisterComponent },
       { path: 'home', component: HomeComponent },
       { path: 'create-ticket', component: CreateTicketComponent },
+      { path: 'edit-ticket', component: EditTicketComponent },
       { path: '**', redirectTo: 'login', pathMatch: 'full' }
     ])
   ],

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Ticket } from '../ticket';
 import { TicketService } from '../ticket.service';
@@ -17,7 +18,7 @@ export class TicketListComponent {
   set listFilter(value: string) {
     this._listFilter = value;
    }
-  constructor(private ticketService: TicketService){
+  constructor(private ticketService: TicketService, private router: Router) {
     
   }
   tickets: Ticket[] = [];
@@ -33,7 +34,7 @@ export class TicketListComponent {
   closeTicket(ticketId:number){
     this.ticketService.closeTicket(ticketId).subscribe({
       next: () => {
-        this.tickets = this.tickets.filter(ticket => ticket.id === ticketId);
+        this.tickets = this.tickets.filter(ticket => ticket.id !== ticketId);
       },
       error: err => console.log(err)
     });
@@ -41,9 +42,13 @@ export class TicketListComponent {
   deleteTicket(ticketId:number){
     this.ticketService.deleteTicket(ticketId).subscribe({
       next: () => {
-        this.tickets = this.tickets.filter(ticket => ticket.id === ticketId);
+        this.tickets = this.tickets.filter(ticket => ticket.id !== ticketId);
       },
       error: err => console.log(err)
     });
+  }
+  editTicket(ticket:Ticket){
+    this.ticketService.setEditedTicket(ticket);
+    this.router.navigate(['/edit-ticket']);
   }
 }

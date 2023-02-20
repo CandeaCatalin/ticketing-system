@@ -12,7 +12,7 @@ namespace TicketingSystem.Tickets.Domain.Models
         public User UserWhoCreated { get; set; } = new User();
         public TicketServiceType ServiceType { get; set; } = new TicketServiceType();
         public string Subject { get; set; } = "";
-        public string Desciption { get; set; } = "";
+        public string Description { get; set; } = "";
         public TicketStatus Status { get; set; } = new TicketStatus();
         public DateTime Opened { get; set; }
         public string CustomerName { get; set; }

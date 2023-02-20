@@ -26,7 +26,7 @@ namespace TicketingSystem.Tickets.DataAccess.Repositories
             TicketPriority priority = await GetPriorityFromDbAsync(model.PriorityId);
             var newTicketToAdd = new Ticket
             {
-                Desciption = model.Description,
+                Description = model.Description,
                 Subject = model.Subject,
                 TicketType = ticketType,
                 UserWhoCreated = user,
@@ -120,8 +120,9 @@ namespace TicketingSystem.Tickets.DataAccess.Repositories
             existingTicket.Status = newTicketStatus;
             existingTicket.ServiceType = newTicketServiceType;
             existingTicket.Priority = priority;
+            existingTicket.CustomerName = model.CustomerName;
             existingTicket.Subject = model.Subject;
-            existingTicket.Desciption = model.Description;
+            existingTicket.Description = model.Description;
             existingTicket.TicketType = newTicketType;
             _ticketDbContext.Update(existingTicket);
             await _ticketDbContext.SaveChangesAsync();

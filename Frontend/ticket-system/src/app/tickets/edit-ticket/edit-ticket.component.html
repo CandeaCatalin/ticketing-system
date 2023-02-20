@@ -1,0 +1,22 @@
+<h1>{{pageTitle}}</h1>
+<form>
+    <div class="form-group">
+        <div class="form-group">
+            <label for="firstNameInput">Subject</label>
+            <input type="text" class="form-control" id="subjectId" aria-describedby="emailHelp" placeholder="Subject" name="subject" [(ngModel)]="newTicket.subject">
+        </div>
+        <div class="form-group">
+            <label for="firstNameInput">Description</label>
+            <input type="text" class="form-control" id="descriptionId" aria-describedby="emailHelp" placeholder="Description" name="description" [(ngModel)]="newTicket.description">
+        </div>
+        <div class="form-group">
+            <label for="firstNameInput">Customer Name</label>
+            <input type="text" class="form-control" id="customerName" aria-describedby="emailHelp" placeholder="Customer name" name="customerName" [(ngModel)]="newTicket.customerName">
+        </div>
+        <div for="cars">Ticket type: {{newTicket.ticketType.name}}</div>
+        <div for="cars">Service type: {{newTicket.serviceType.name}}</div>
+        <div for="cars">Priority: {{newTicket.priority.name}}</div>
+        <div for="cars">Status: {{newTicket.status.name}}</div>
+        </div>
+    <button type="submit" (click)='editTicket()' class="btn btn-primary">Edit ticket</button>
+</form>

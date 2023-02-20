@@ -31,10 +31,6 @@
             <option *ngFor='let status of standardTicketProperties.statuses'
              value="{{status.id}}">{{status.name}}</option>
             </select>
-        
-        
-        
-        
     </div>
     <button type="submit" (click)='createTicket()' class="btn btn-primary">Create ticket</button>
 </form>

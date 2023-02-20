@@ -31,6 +31,7 @@
               <td>{{ ticket.opened | date:'short' }}</td>
               <td><button type="submit" (click)='deleteTicket(ticket.id)' class="btn btn-secondary">delete</button></td>
               <td><button type="submit" (click)='closeTicket(ticket.id)' class="btn btn-secondary">close</button></td>
+              <td><button type="submit" (click)='editTicket(ticket)' class="btn btn-secondary">edit</button></td>
             </tr>
           </tbody>
         </table>
