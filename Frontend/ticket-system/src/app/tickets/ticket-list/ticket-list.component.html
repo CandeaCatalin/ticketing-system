@@ -1,0 +1,40 @@
+<div class='card'>
+    <div class='card-header'>
+      {{pageTitle}}
+    </div>
+    <div class='card-body'>
+      
+      
+      <div class='table-responsive'>
+        <table class='table'
+               *ngIf='tickets.length'>
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Type</th>
+              <th>Customer</th>
+              <th>Service Type</th>
+              <th>Status</th>
+              <th>Open</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let ticket of tickets'>
+              <td>{{ ticket.subject }}</td>
+              <td>{{ ticket.ticketType.name }}</td>
+              <td>{{ ticket.customerName }}</td>
+              <td>{{ ticket.serviceType.name }}</td>
+              <td>{{ ticket.status.name}} </td>
+              <td>{{ ticket.opened | date:'short' }}</td>
+              <td><button type="submit" (click)='deleteTicket(ticket.id)' class="btn btn-secondary">delete</button></td>
+              <td><button type="submit" (click)='closeTicket(ticket.id)' class="btn btn-secondary">close</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  </div>

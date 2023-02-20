@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { LoginCredentials } from "../Login/loginCredentials";
-import { RegisterCredentials } from "../register/registerCredentials";
+import { LoginCredentials } from "../../login/loginCredentials";
+import { RegisterCredentials } from "../../register/registerCredentials";
+import { CreateHeader } from "../httpHeaders";
 
 @Injectable(
     {
@@ -18,14 +19,8 @@ import { RegisterCredentials } from "../register/registerCredentials";
         return this.httpClient.post(this.baseUrl + "/login",loginCredentials);
     }
     public CheckIfLoggedIn():Observable<any>{
-    let header = this.CreateHeader();
+    let header = CreateHeader();
     return this.httpClient.get(this.baseUrl + "/checkSession",{headers:header});    
-    }
-    private CreateHeader = ()=>{
-        let headers = new HttpHeaders();
-        headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-        headers = headers.set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-        return headers;
     }
     public Register(registerCredentials:RegisterCredentials):Observable<any>{
         return this.httpClient.post(this.baseUrl + "/register",registerCredentials);

@@ -11,12 +11,12 @@ namespace TicketingSystem.Tickets.DataAccess.Repositories
         public UserRepository(TicketDbContext ticketDbContext) {
             _ticketDbContext = ticketDbContext;
         }
-        public async Task AddUserInDb(string userId, string userName)
+        public async Task AddUserInDb(Guid userId, string userName)
         {
-            var userIdAsGuid = new Guid(userId);
-            if(await GetUserFromDb(userIdAsGuid) is null)
+            
+            if(await GetUserFromDb(userId) is null)
             {
-                var newUser = new User { Id = userIdAsGuid, Name = userName };
+                var newUser = new User { Id = userId, Name = userName };
                 await _ticketDbContext.Users.AddAsync(newUser);
                 _ticketDbContext.SaveChanges();
             }

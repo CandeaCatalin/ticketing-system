@@ -19,8 +19,7 @@ namespace TicketingSystem.Tickets.DataAccess.Repositories
         }
         public async Task CreateTicket(CreateTicketModel model)
         {
-            var userIdAsGuid = new Guid(model.UserId);
-            User? user = await GetUserAsync(userIdAsGuid);
+            User? user = await GetUserAsync((Guid)model.UserId);
             TicketStatus ticketStatus = await GetTicketStatusFromDbAsync(model.StatusId);
             TicketType ticketType = await GetTicketTypeFromDbAsync(model.TicketTypeId);
             TicketServiceType ticketServiceType = await GetTicketServiceTypeFromDbAsync(model.ServiceTypeId);
@@ -158,7 +157,7 @@ namespace TicketingSystem.Tickets.DataAccess.Repositories
 
         public Task<List<Ticket>> GetTicketsForUser(Guid userId)
         {
-            return _ticketDbContext.Tickets.Include(t => t.TicketType).Include(t => t.ServiceType).Include(t => t.Status).Include(t => t.Priority).Include(t=>t.UserWhoCreated).Where(t => t.UserWhoCreated.Id == userId).ToListAsync();
+            return _ticketDbContext.Tickets.Include(t => t.TicketType).Include(t => t.ServiceType).Include(t => t.Status).Include(t => t.Priority).Include(t=>t.UserWhoCreated).Where(t => t.UserWhoCreated.Id == userId && t.Closed == default).ToListAsync();
         }
     }
 }

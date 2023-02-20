@@ -28,7 +28,10 @@ namespace TicketingSystem.Tickets.API.Controllers
         {
             try
             {
-                await _userRepository.AddUserInDb(model.UserId, model.UserName);
+                var jwtToken = await HttpContext.GetTokenAsync("access_token");
+                Guid userId = JwtService.getUserIdFromJwt(jwtToken);
+                await _userRepository.AddUserInDb(userId, model.UserName);
+                model.UserId = userId;
                 await _ticketRepository.CreateTicket(model);
                 return Ok();
             }
@@ -69,7 +72,7 @@ namespace TicketingSystem.Tickets.API.Controllers
 
         }
         [HttpPost("close")]
-        public async Task<IActionResult> CloseTicket(CloseTicketModel model)
+        public async Task<IActionResult> CloseTicketAsync(CloseTicketModel model)
         {
             try
             {
@@ -96,7 +99,7 @@ namespace TicketingSystem.Tickets.API.Controllers
             }
         }
         [HttpGet("getStandardProperties")]
-        public async Task<IActionResult> GetTicketStandardProperties()
+        public async Task<IActionResult> GetTicketStandardPropertiesAsync()
         {
             try
             {

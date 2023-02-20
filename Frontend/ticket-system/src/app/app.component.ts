@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from './services/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,10 @@ export class AppComponent {
     }
     ngOnInit() {
       this.loginService.CheckIfLoggedIn().subscribe({
-        next: () => {this.router.navigate(['home']);},
+        next: () => {
+          this.router.navigate(['home']);
+          
+        },
         error: () => {this.router.navigate(['login']);}
       })
     }

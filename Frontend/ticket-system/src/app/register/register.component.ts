@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../services/auth/auth.service';
 import { RegisterCredentials } from './registerCredentials';
 
 @Component({
@@ -9,7 +9,7 @@ import { RegisterCredentials } from './registerCredentials';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  PageTitle: string = "Register page";
+  pageTitle: string = "Register page";
   error:string = "";
   canSubmit:boolean = false;
   private _registerCredentials:RegisterCredentials = {email: "", password: "", firstName: "", lastName: "", confirmPassword:""};

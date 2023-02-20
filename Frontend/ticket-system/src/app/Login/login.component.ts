@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthService } from "../auth/auth.service";
+import { JwtHelperService } from "@auth0/angular-jwt";
+import { AuthService } from "../services/auth/auth.service";
 import { LoginCredentials } from "./loginCredentials";
 
 @Component({
@@ -8,11 +9,11 @@ import { LoginCredentials } from "./loginCredentials";
     templateUrl: "./login.component.html",
 })
 export class LoginComponent {
-    PageTitle: string = "Login page";
+    pageTitle: string = "Login page";
     error:string = "";
     canSubmit:boolean = false;
     private _loginCredentials: LoginCredentials={email:"", password:""};
-    constructor(private authService: AuthService,private router: Router){}
+    constructor(private authService: AuthService,private router: Router, private jwtService:JwtHelperService){}
     get loginCredentials(){
         return this._loginCredentials;
     }
@@ -28,9 +29,10 @@ export class LoginComponent {
         this.authService.Login(this.loginCredentials).subscribe({
             next: response => {
                 localStorage.setItem("token",response.token);
+                localStorage.setItem("name",this.jwtService.decodeToken(response.token).unique_name);
                 this.router.navigate(['home']);
             },
             error: err => {this.error = err.error;}
           });
     }
-   }
+}
