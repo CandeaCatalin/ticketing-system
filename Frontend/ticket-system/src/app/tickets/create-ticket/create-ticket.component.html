@@ -1,0 +1,40 @@
+<h1>{{pageTitle}}</h1>
+<form>
+    <div class="form-group">
+        <div class="form-group">
+            <label for="firstNameInput">Subject</label>
+            <input type="text" class="form-control" id="InputFirstName" aria-describedby="emailHelp" placeholder="FirstName" name="subject" [(ngModel)]="createdTicket.subject">
+        </div>
+        <div class="form-group">
+            <label for="firstNameInput">Description</label>
+            <input type="text" class="form-control" id="InputFirstName" aria-describedby="emailHelp" placeholder="FirstName" name="description" [(ngModel)]="createdTicket.description">
+        </div>
+        <div class="form-group">
+            <label for="firstNameInput">Customer Name</label>
+            <input type="text" class="form-control" id="InputFirstName" aria-describedby="emailHelp" placeholder="FirstName" name="customerName" [(ngModel)]="createdTicket.customerName">
+        </div>
+            <label for="cars">Ticket type:</label>
+            <select name="ticketTypes" id="ticketType" [(ngModel)]="createdTicket.ticketTypeId">
+                <option *ngFor='let ticketType of standardTicketProperties.ticketTypes'
+                value="{{ticketType.id}}">{{ticketType.name}}</option>
+        </select><label for="cars">Service type:</label>
+            <select name="serviceTypes" id="serviceType" [(ngModel)]="createdTicket.serviceTypeId">
+                <option *ngFor='let serviceType of standardTicketProperties.serviceTypes'
+                value="{{serviceType.id}}">{{serviceType.name}}</option>
+        </select><label for="cars">Priority:</label>
+            <select name="priorities" id="priority" [(ngModel)]="createdTicket.priorityId">
+           <option *ngFor='let priority of standardTicketProperties.priorities'
+             value="{{priority.id}}">{{priority.name}}</option>  
+            </select>
+            <label for="cars">Status:</label>
+            <select name="statuses" id="status" [(ngModel)]="createdTicket.statusId">
+            <option *ngFor='let status of standardTicketProperties.statuses'
+             value="{{status.id}}">{{status.name}}</option>
+            </select>
+        
+        
+        
+        
+    </div>
+    <button type="submit" (click)='createTicket()' class="btn btn-primary">Create ticket</button>
+</form>
